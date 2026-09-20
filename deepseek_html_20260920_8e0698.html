@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎰 CS2 Casino — Cases & Upgrader</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">🎰 CS2 CASINO</div>
+  <div class="balance">💰 <span id="balance">1000</span> ₽</div>
+</header>
+
+<nav>
+  <button class="tab active" data-tab="cases">📦 Кейсы</button>
+  <button class="tab" data-tab="upgrader">🔧 Апгрейдер</button>
+  <button class="tab" data-tab="battle">⚔️ Case Battle</button>
+  <button class="tab" data-tab="inventory">🎒 Инвентарь</button>
+</nav>
+
+<main>
+  <!-- КЕЙСЫ -->
+  <section id="cases" class="tab-content active">
+    <h2>📦 Открытие кейсов</h2>
+    <div class="case-selector">
+      <div class="case-card" data-case="bronze">
+        <img src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCjf8TQxMLBAF5WpR2rgY9mWic2p-ynJz9kZ2VhY2yxJ8THlR4" alt="Bronze">
+        <h3>Bronze Case</h3>
+        <p>25 ₽</p>
+        <button onclick="openCase('bronze')">Открыть</button>
+      </div>
+      <div class="case-card" data-case="silver">
+        <img src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCjf8TQxMLBAF5WpR2rgY9mWic2p-ynJz9kZ2VhY2yxJ8THlR4" alt="Silver">
+        <h3>Silver Case</h3>
+        <p>100 ₽</p>
+        <button onclick="openCase('silver')">Открыть</button>
+      </div>
+      <div class="case-card" data-case="gold">
+        <img src="https://community.cloudflare.steamstatic.com/economy/image/-9a81dlWLwJ2UUGcVs_nsVtzdOEdtWwKGZZLQHTxDZ7I56KU0Zwwo4NUX4oFJZEHLbXH5ApeO4YmlhxYQknCRvCjf8TQxMLBAF5WpR2rgY9mWic2p-ynJz9kZ2VhY2yxJ8THlR4" alt="Gold">
+        <h3>Gold Case</h3>
+        <p>500 ₽</p>
+        <button onclick="openCase('gold')">Открыть</button>
+      </div>
+    </div>
+
+    <div class="case-animation" id="caseAnimation">
+      <div class="case-strip" id="caseStrip"></div>
+      <div class="case-pointer"></div>
+    </div>
+
+    <div id="caseResult"></div>
+  </section>
+
+  <!-- АПГРЕЙДЕР -->
+  <section id="upgrader" class="tab-content">
+    <h2>🔧 Апгрейдер</h2>
+    <div class="upgrader-container">
+      <div class="upgrader-slot" id="slotFrom">
+        <p>Выбери предмет из инвентаря</p>
+      </div>
+      <div class="upgrader-arrow">
+        <input type="number" id="upgradeChance" min="1" max="95" value="50">
+        <span>% шанс</span>
+        <div>➡️</div>
+      </div>
+      <div class="upgrader-slot" id="slotTo">
+        <p>Результат</p>
+      </div>
+      <button id="upgradeBtn" onclick="doUpgrade()">Апгрейд</button>
+    </div>
+    <div id="upgradeResult"></div>
+  </section>
+
+  <!-- CASE BATTLE -->
+  <section id="battle" class="tab-content">
+    <h2>⚔️ Case Battle</h2>
+    <p>Открой 3 кейса против бота. Побеждает тот, у кого суммарная стоимость больше!</p>
+    <button onclick="startBattle()">Начать батл (100 ₽)</button>
+    <div class="battle-arena">
+      <div class="battle-side">
+        <h3>👤 Ты</h3>
+        <div id="playerItems" class="battle-items"></div>
+        <div class="battle-total" id="playerTotal">0 ₽</div>
+      </div>
+      <div class="battle-vs">VS</div>
+      <div class="battle-side">
+        <h3>🤖 Бот</h3>
+        <div id="botItems" class="battle-items"></div>
+        <div class="battle-total" id="botTotal">0 ₽</div>
+      </div>
+    </div>
+    <div id="battleResult"></div>
+  </section>
+
+  <!-- ИНВЕНТАРЬ -->
+  <section id="inventory" class="tab-content">
+    <h2>🎒 Инвентарь</h2>
+    <div id="inventoryGrid" class="inventory-grid"></div>
+    <button onclick="sellAll()">💸 Продать всё</button>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
